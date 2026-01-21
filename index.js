@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 
 const { addDuvaluWallets, duvaluTransfer } = require('./duval.js');
 
+app.get("/", (req, res) => {
+    res.send("never get duvaled...");
+});
+
 app.post('/duvalu/add', async (req, res) => {
     try {
         const { wallets, totalSOL } = req.body;
@@ -45,4 +49,4 @@ app.post('/duvalu/transfer', async (req, res) => {
 
 const PORT = process.env.PORT || 3800;
 
-app.listen(PORT, async () => console.log(`Evan is running on ${PORT}...`));
+app.listen(PORT, "0.0.0.0", async () => console.log(`Evan is running on ${PORT}...`));
